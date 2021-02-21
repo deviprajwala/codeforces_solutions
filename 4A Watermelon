@@ -1,0 +1,55 @@
+/*watermelon*/
+/*to check whether the watermelon of weight 'w' can be divided among two friends such that the weight of each peice is an even number.It is not necessary that the watermelon has to be 
+divided equally*/
+
+#include <iostream>
+using namespace std;
+
+int fun(int water)
+//recursive function to check if the pieces can be evenly divided
+{
+    if(water == 0 || water % 2 == 0 && water != 2)
+    //if weight is 0 or if it is divisible by two then the answer would be yes.. but if the weight is two it cannot be evenly divided
+    {
+        return 1;
+    }
+    else if( water == 1 )
+    //if the weight is 1 then answer would be no
+    {
+        return 0;
+    }
+    if(water%2!=0)
+    //the weight is decremented by 2 and checked further by calling the recursive function
+    {
+        water-=2;
+        fun(water);
+    }
+    else
+    {
+         return 0;
+    }
+   
+}
+int main()
+{
+    float w;
+    cin>>w;
+    
+    //the possibilty of watermelon being evenly divisible or not depends on the value returned by the function 'fun'
+    if(fun(w)==1)
+    {
+        cout << "YES";
+    }
+    else
+    {
+        cout << "NO";
+    }
+    
+    return 0;
+}
+
+
+/*
+input 8
+output YES
+*/
